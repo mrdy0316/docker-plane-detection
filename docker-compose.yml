@@ -3,8 +3,10 @@ services:
   plane-detection:
     build: .
     volumes: 
-      - ./img/:/home/user/RGBDPlaneDetection/img/
+      - ./input/:/home/user/RGBDPlaneDetection/input/
       - ./output/:/home/user/RGBDPlaneDetection/output/
+    command: 
+      - 
     tty: true
 
 # if you want to enter the container
