@@ -1,0 +1,13 @@
+version: '3'
+services:
+  plane-detection:
+    build: .
+    volumes: 
+      - ./img/:/home/user/RGBDPlaneDetection/img/
+      - ./output/:/home/user/RGBDPlaneDetection/output/
+    tty: true
+
+# if you want to enter the container
+# delete comment-out on line 9
+# docker-compose up -d
+# docker-compose exec plane-detection bash
