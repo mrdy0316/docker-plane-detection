@@ -93,6 +93,12 @@ bool PlaneDetection::readDepthImage(string filename)
 		int j = 0;
 		while( (p = str.find(",")) != str.npos ) {
 			double z = (double)(stod(str.substr(0,p))) / 0.001;
+			if(z > 10000) {
+				cloud.vertices[vertex_idx++] = VertexType(0, 0, 0);
+				str = str.substr(p+1);
+				j++;
+				continue;
+			}
 			double x = ((double)j - kCx) * z / kFx;
 			double y = ((double)i - kCy) * z / kFy;
 			cloud.vertices[vertex_idx++] = VertexType(x, y, z);
@@ -100,6 +106,12 @@ bool PlaneDetection::readDepthImage(string filename)
 			j++;
 		}
 		double z = (double)(stod(str.substr(0,p))) / 0.001;
+		if(z > 10000) {
+			cloud.vertices[vertex_idx++] = VertexType(0, 0, 0);
+			str = str.substr(p+1);
+			j++;
+			continue;
+		}
 		double x = ((double)j - kCx) * z / kFx;
 		double y = ((double)i - kCy) * z / kFy;
 		cloud.vertices[vertex_idx++] = VertexType(x, y, z);
