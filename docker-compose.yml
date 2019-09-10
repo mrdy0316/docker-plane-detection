@@ -5,8 +5,6 @@ services:
     volumes: 
       - ./input/:/home/user/RGBDPlaneDetection/input/
       - ./output/:/home/user/RGBDPlaneDetection/output/
-    command: 
-      - 
     tty: true
 
 # if you want to enter the container

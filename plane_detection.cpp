@@ -92,13 +92,17 @@ bool PlaneDetection::readDepthImage(string filename)
 	while(getline(ifs, str)) {
 		int j = 0;
 		while( (p = str.find(",")) != str.npos ) {
-			double z = stod(str.substr(0,p)) * 1000.0;
+			double z = (double)(stod(str.substr(0,p))) / 0.001;
 			double x = ((double)j - kCx) * z / kFx;
 			double y = ((double)i - kCy) * z / kFy;
 			cloud.vertices[vertex_idx++] = VertexType(x, y, z);
 			str = str.substr(p+1);
 			j++;
 		}
+		double z = (double)(stod(str.substr(0,p))) / 0.001;
+		double x = ((double)j - kCx) * z / kFx;
+		double y = ((double)i - kCy) * z / kFy;
+		cloud.vertices[vertex_idx++] = VertexType(x, y, z);
 		i++;
 	}
 	return true;
