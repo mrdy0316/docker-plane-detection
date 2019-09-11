@@ -221,7 +221,7 @@ void PlaneDetection::writePlaneLabelFile(string filename, bool run_mrf /* = fals
 void PlaneDetection::writePlaneDataFile(string filename, bool run_mrf /* = false */)
 {
 	ofstream out(filename, ios::out);
-	out << "#plane_index number_of_points_on_the_plane plane_color_in_png_image(1x3) plane_normal(1x3) plane_center(1x3) "
+	out << "#plane_index number_of_points_on_the_plane col_r col_g col_b norm_x norm_y norm_z cent_x cent_y cent_z "
 		<< "sx sy sz sxx syy szz sxy syz sxz" << endl;
 
 	for (int pidx = 0; pidx < plane_num_; ++pidx)
